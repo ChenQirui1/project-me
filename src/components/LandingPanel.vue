@@ -1,23 +1,28 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const showDetails = ref(false);
 
-defineProps({ title: String });
+defineProps({ title: String, link: String });
 </script>
 
 <template>
-  <div
-    @mouseenter="showDetails = !showDetails"
-    @mouseleave="showDetails = !showDetails"
-    class="flex-1"
+  <RouterLink
+    :to="link ? link : '/'"
+    @mouseenter="showDetails = true"
+    @mouseleave="showDetails = false"
+    class="flex-1 relative"
   >
     <Transition
-      ><h1 v-if="showDetails" class="text-slate-950 text-center">
+      ><h1
+        v-if="showDetails"
+        class="text-slate-950 text-center absolute bottom-2 w-full"
+      >
         {{ title }}
       </h1></Transition
     >
-  </div>
+  </RouterLink>
 </template>
 
 <style scoped>

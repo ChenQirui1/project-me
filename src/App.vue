@@ -3,8 +3,10 @@ import BaseNavbar from "./components/BaseNavbar.vue";
 </script>
 
 <template>
-  <BaseNavbar></BaseNavbar>
-  <RouterView></RouterView>
+  <div class="flex flex-col h-screen">
+    <BaseNavbar class="sticky top-0"></BaseNavbar>
+    <RouterView></RouterView>
+  </div>
 </template>
 
 <style scoped>
